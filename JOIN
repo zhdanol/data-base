@@ -1,0 +1,27 @@
+SELECT genre, count(musicians) FROM musicians m
+JOIN genremusicians ge ON m.musicians_id = ge.musicians_id
+JOIN music_genre g ON ge.genre_id = g.genre_id
+GROUP BY g.genre_id;  
+
+SELECT count(songs_name) FROM songs s
+JOIN albums a ON a.albums_id = s.albums_id
+WHERE a.album_name between 2019 AND 2020;
+
+SELECT album_name, AVG(songs_duration) FROM songs s 
+JOIN albums a ON a.album_id = s.album_id 
+GROUP BY a.album_name;  
+
+SELECT musicians FROM musicians m 
+WHERE musicians not in(   
+SELECT musicians FROM albums a  
+JOIN albumsmusicians al ON a.albums_id = al.album_id
+JOIN musicians mus ON al.musicians_id = mus.musicians_id   
+where a.album_year = 2020);
+
+SELECT collection_id FROM collection c
+JOIN songscollection sc ON c.collectioon_id = sc.collectioon_id 
+JOIN songs s ON sc.songs_id = s.songs_id
+JOIN albums a ON s.albums_id = a.albums_id
+JOIN albumsmusicians als ON a.albums_id = als.albums_id
+JOIN musicians m ON als.musicians_id = m.musicians_id
+WHERE m.musicians_id LIKE 'The Weeknd'; 
