@@ -1,0 +1,22 @@
+SELECT songs_name, songs_duration
+FROM songs
+WHERE songs_duration = (select max(songs_duration) from Songs);
+
+SELECT songs_name, songs_duration
+FROM songs
+WHERE songs_duration > 210;
+
+SELECT collection_id, collection_year 
+FROM collection  
+WHERE collection between 2018 and 2020;
+
+SELECT musicians   
+FROM musicians   
+WHERE musicians not LIKE '% %';
+
+SELECT songs_name   
+FROM songs   
+WHERE songs_name LIKE 'мой%' or songs_name LIKE '%мой' or songs_name LIKE 'my%' or songs_name LIKE '%my'
+or songs_name LIKE 'Мой%' or songs_name LIKE '%Мой' or songs_name LIKE 'My%' or songs_name LIKE '%My'
+or songs_name LIKE 'мой' or songs_name LIKE 'мой' or songs_name LIKE 'my' or songs_name LIKE 'my'
+or songs_name LIKE 'Мой' or songs_name LIKE 'Мой' or songs_name LIKE 'My' or songs_name LIKE 'My'
